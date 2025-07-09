@@ -1,4 +1,3 @@
-// src/App.js
 import { useEffect, useState } from 'react'
 import './App.css'
 import mascot from './mascot.png'
@@ -6,7 +5,6 @@ import mascot from './mascot.png'
 function App() {
   const [timeLeft, setTimeLeft] = useState({})
   const [finished, setFinished] = useState(false)
-
 
   const launchDate = new Date('2026-01-01T00:00:00')
 
@@ -33,20 +31,22 @@ function App() {
   }, [])
 
   return (
-    <div className="container">
-      <img src={mascot} alt="Cubyfit Maskot" className="mascot" />
-      <h1 className="title">CUBYFIT</h1>
+    <div className="modern-container">
+      <img src={mascot} alt="Cubyfit Maskot" className="modern-mascot" />
+      <h1 className="modern-title">CUBYFIT</h1>
 
       {finished ? (
-        <p className="message">🎉 Geldik! 🎉</p>
+        <p className="modern-message">🎉 Geldik! 🎉</p>
       ) : (
-        <>
-          <p className="countdown">
-            {timeLeft.days}g {timeLeft.hours}s {timeLeft.minutes}dk {timeLeft.seconds}sn
-          </p>
-          <p className="info">Yakında görüşürüz...</p>
-        </>
+        <div className="flip-clock">
+          <div className="flip-box"><span>{String(timeLeft.days).padStart(2, '0')}</span><label>Gün</label></div>
+          <div className="flip-box"><span>{String(timeLeft.hours).padStart(2, '0')}</span><label>Saat</label></div>
+          <div className="flip-box"><span>{String(timeLeft.minutes).padStart(2, '0')}</span><label>Dakika</label></div>
+          <div className="flip-box"><span>{String(timeLeft.seconds).padStart(2, '0')}</span><label>Saniye</label></div>
+        </div>
       )}
+
+      <p className="modern-subtext">Zaman sonra, CUBYFIT yanında.</p>
     </div>
   )
 }
